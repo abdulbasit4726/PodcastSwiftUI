@@ -11,7 +11,7 @@ import SwiftUI
 struct Podcast_SwiftUIApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainTabBarScreen()
         }
     }
 }
