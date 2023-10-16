@@ -13,9 +13,17 @@ struct PodcastSearchScreen: View {
     @State private var searchText: String = ""
     @ObservedObject private var vm = PodcastSearchViewModel()
     
+    init() {
+        calling()
+    }
+    
+    func calling() {
+        print("Calling tab again")
+    }
+    
     // MARK: - Body
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack {
                 ScrollView {
                     ForEach(vm.podcasts) { podcast in
@@ -40,6 +48,7 @@ struct PodcastSearchScreen: View {
                 self.vm.handleSearch(searchText: newValue)
             }
         } //: Navigation
+        
     }
 }
 

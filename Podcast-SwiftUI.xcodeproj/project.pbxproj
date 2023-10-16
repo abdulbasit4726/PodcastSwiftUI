@@ -29,6 +29,10 @@
 		9364F7E42AC8603A00B43687 /* PodcastSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9364F7E32AC8603A00B43687 /* PodcastSearchViewModel.swift */; };
 		9364F7E62AC862CF00B43687 /* EpisodesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9364F7E52AC862CF00B43687 /* EpisodesViewModel.swift */; };
 		9364F7E82AC8694500B43687 /* EpisodeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9364F7E72AC8694500B43687 /* EpisodeDetailViewModel.swift */; };
+		9364F7EC2ACEF73000B43687 /* MainTabBarScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9364F7EB2ACEF73000B43687 /* MainTabBarScreenViewModel.swift */; };
+		93EAC8642ADC4B1A002CAB86 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EAC8632ADC4B1A002CAB86 /* UIApplication.swift */; };
+		93EAC8662ADC53E5002CAB86 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EAC8652ADC53E5002CAB86 /* Helpers.swift */; };
+		93EAC8682ADC5A47002CAB86 /* MiniPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EAC8672ADC5A46002CAB86 /* MiniPlayerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +59,11 @@
 		9364F7E32AC8603A00B43687 /* PodcastSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastSearchViewModel.swift; sourceTree = "<group>"; };
 		9364F7E52AC862CF00B43687 /* EpisodesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesViewModel.swift; sourceTree = "<group>"; };
 		9364F7E72AC8694500B43687 /* EpisodeDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailViewModel.swift; sourceTree = "<group>"; };
+		9364F7EB2ACEF73000B43687 /* MainTabBarScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarScreenViewModel.swift; sourceTree = "<group>"; };
+		93EAC8622AD46139002CAB86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		93EAC8632ADC4B1A002CAB86 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
+		93EAC8652ADC53E5002CAB86 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		93EAC8672ADC5A46002CAB86 /* MiniPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniPlayerView.swift; sourceTree = "<group>"; };
 		B0116B282E0123EE5B9B1BA1 /* Pods-Podcast-SwiftUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Podcast-SwiftUI.release.xcconfig"; path = "Target Support Files/Pods-Podcast-SwiftUI/Pods-Podcast-SwiftUI.release.xcconfig"; sourceTree = "<group>"; };
 		E9A62490FE219AC0AF065089 /* Pods-Podcast-SwiftUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Podcast-SwiftUI.debug.xcconfig"; path = "Target Support Files/Pods-Podcast-SwiftUI/Pods-Podcast-SwiftUI.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -92,6 +101,7 @@
 		9364F7B12AC07A6F00B43687 /* Podcast-SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				93EAC8622AD46139002CAB86 /* Info.plist */,
 				9364F7B22AC07A6F00B43687 /* Podcast_SwiftUIApp.swift */,
 				9364F7B42AC07A6F00B43687 /* MainTabBarScreen.swift */,
 				9364F7C32AC07C5800B43687 /* Models */,
@@ -132,6 +142,7 @@
 				9364F7D22AC0AAC800B43687 /* PodcastCellView.swift */,
 				9364F7DA2AC31C3A00B43687 /* EpisodeCellView.swift */,
 				9364F7DE2AC343C300B43687 /* EpisodeDetailView.swift */,
+				93EAC8672ADC5A46002CAB86 /* MiniPlayerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -142,6 +153,7 @@
 				9364F7D82AC31A5600B43687 /* RSSFeed.swift */,
 				9364F7DC2AC31E1600B43687 /* Date.swift */,
 				9364F7E02AC5C02800B43687 /* CMTime.swift */,
+				93EAC8632ADC4B1A002CAB86 /* UIApplication.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -167,6 +179,7 @@
 		9364F7C52AC07CBF00B43687 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				93EAC8652ADC53E5002CAB86 /* Helpers.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -177,6 +190,7 @@
 				9364F7E32AC8603A00B43687 /* PodcastSearchViewModel.swift */,
 				9364F7E52AC862CF00B43687 /* EpisodesViewModel.swift */,
 				9364F7E72AC8694500B43687 /* EpisodeDetailViewModel.swift */,
+				9364F7EB2ACEF73000B43687 /* MainTabBarScreenViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -325,12 +339,16 @@
 				9364F7D72AC2B58100B43687 /* Episode.swift in Sources */,
 				9364F7CD2AC093E700B43687 /* Podcast.swift in Sources */,
 				9364F7C72AC08F7B00B43687 /* FavoritesScreen.swift in Sources */,
+				93EAC8682ADC5A47002CAB86 /* MiniPlayerView.swift in Sources */,
 				9364F7CB2AC08FAB00B43687 /* DownloadsScreen.swift in Sources */,
 				9364F7E42AC8603A00B43687 /* PodcastSearchViewModel.swift in Sources */,
+				93EAC8662ADC53E5002CAB86 /* Helpers.swift in Sources */,
+				93EAC8642ADC4B1A002CAB86 /* UIApplication.swift in Sources */,
 				9364F7B32AC07A6F00B43687 /* Podcast_SwiftUIApp.swift in Sources */,
 				9364F7CF2AC0A47F00B43687 /* NetworkService.swift in Sources */,
 				9364F7E82AC8694500B43687 /* EpisodeDetailViewModel.swift in Sources */,
 				9364F7DB2AC31C3A00B43687 /* EpisodeCellView.swift in Sources */,
+				9364F7EC2ACEF73000B43687 /* MainTabBarScreenViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -463,6 +481,7 @@
 				DEVELOPMENT_TEAM = TFBSTVC375;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Podcast-SwiftUI/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -493,6 +512,7 @@
 				DEVELOPMENT_TEAM = TFBSTVC375;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Podcast-SwiftUI/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

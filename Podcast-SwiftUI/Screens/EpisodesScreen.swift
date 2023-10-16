@@ -11,7 +11,8 @@ struct EpisodesScreen: View {
     
     // MARK: - Properties
     @ObservedObject private var vm: EpisodesViewModel
-    @State private var isShowingBottomSheet: Bool = false
+    @EnvironmentObject var vmMainTabBar: MainTabBarScreenViewModel
+    @EnvironmentObject var vmPlayerDetail: EpisodeDetailViewModel
     
     var podcast: Podcast?
     
@@ -23,27 +24,26 @@ struct EpisodesScreen: View {
     
     // MARK: - Body
     var body: some View {
-        ZStack {
-            // TODO: List of Episodes
-            ScrollView() {
-                ForEach(vm.episodes) { episode in
-                    EpisodeCellView(episode: episode)
-                        .onTapGesture {
-                            vm.episode = episode
-                            isShowingBottomSheet = true
-                        }
-                }//: Loop
-            } //: Scroll
+            ZStack {
+                // TODO: List of Episodes
+                ScrollView() {
+                    ForEach(vm.episodes) { episode in
+                        EpisodeCellView(episode: episode)
+                            .onTapGesture {
+                                vmPlayerDetail.episode = episode
+                                vmMainTabBar.isMiniPlayer = false
+                            }
+                    }//: Loop
+                } //: Scroll
+                
+                if vm.isLoading {
+                    ProgressView()
+                        .scaleEffect(2.0)
+                }
+                
+            } //: ZStack
             .navigationTitle(podcast?.trackName ?? "")
-            
-            // TODO: Show Episode Detail View
-            EpisodeDetailView(vm: EpisodeDetailViewModel(episode: vm.episode), isShowing: $isShowingBottomSheet)
-            
-            if vm.isLoading {
-                ProgressView()
-                    .scaleEffect(2.0)
-            }
-        } //: ZStack
+            .navigationBarTitleDisplayMode(.large)
     }
 }
 

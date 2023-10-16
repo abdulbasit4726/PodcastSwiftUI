@@ -10,23 +10,28 @@ import AVKit
 
 class EpisodeDetailViewModel: ObservableObject {
     // MARK: - Properties
+    static let shared = EpisodeDetailViewModel()
+    
     @Published var playerSlider: Float = 0
     @Published var volumeSlider: Float = 1
     @Published var imageScaleEffect = 0.7
     @Published var isPlaying: Bool = false
     @Published var currentTime: String = "--:--:--"
     @Published var totalTime: String = "--:--:--"
-    @Published var episode: Episode?
+    @Published var episodeImage: Image?
+    @Published var episode: Episode? {
+        didSet {
+            self.episodeImage = nil
+            self.player.replaceCurrentItem(with: nil)
+            playEpisode()
+            observePlayerStartTime()
+            observePlayerCurrentTime()
+        }
+    }
     
     let player = AVPlayer()
     
     // MARK: - Initializers
-    init(episode: Episode?) {
-        self.episode = episode
-        playEpisode()
-        observePlayerStartTime()
-        observePlayerCurrentTime()
-    }
     
     // MARK: - Functions
     fileprivate func playEpisode() {

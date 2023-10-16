@@ -9,7 +9,6 @@ import SwiftUI
 
 class EpisodesViewModel: ObservableObject {
     @Published var episodes = [Episode]()
-    @Published var episode: Episode?
     @Published var isLoading: Bool = false
     
     init(podcast: Podcast?) {

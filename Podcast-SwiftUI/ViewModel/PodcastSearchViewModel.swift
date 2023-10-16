@@ -15,12 +15,14 @@ class PodcastSearchViewModel: ObservableObject {
     // MARK: - Functions
     func handleSearch(searchText: String) {
         timer?.invalidate()
-        timer = Timer.scheduledTimer(withTimeInterval: 0.7, repeats: false, block: { _ in
-            self.isLoading = true
-            NetworkService.shared.fetchPodcasts(searchText: searchText) { [weak self] podcasts in
-                DispatchQueue.main.async {
-                    self?.isLoading = false
-                    self?.podcasts = podcasts
+        timer = Timer.scheduledTimer(withTimeInterval: 0.7, repeats: false, block: {[weak self] _ in
+            DispatchQueue.main.async {
+                self?.isLoading = true
+                NetworkService.shared.fetchPodcasts(searchText: searchText) { [weak self] podcasts in
+                    DispatchQueue.main.async {
+                        self?.isLoading = false
+                        self?.podcasts = podcasts
+                    }
                 }
             }
         })
