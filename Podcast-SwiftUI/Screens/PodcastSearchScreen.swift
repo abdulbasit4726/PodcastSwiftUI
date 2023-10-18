@@ -13,14 +13,6 @@ struct PodcastSearchScreen: View {
     @State private var searchText: String = ""
     @ObservedObject private var vm = PodcastSearchViewModel()
     
-    init() {
-        calling()
-    }
-    
-    func calling() {
-        print("Calling tab again")
-    }
-    
     // MARK: - Body
     var body: some View {
         NavigationStack {

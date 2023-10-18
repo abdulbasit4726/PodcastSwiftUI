@@ -40,6 +40,15 @@ struct MainTabBarScreen: View {
                 EpisodeDetailView()
                     .frame(height: vm.playerViewHeight)
                     .offset(y: vm.playerViewOffset)
+                    .gesture(
+                        DragGesture()
+                            .onChanged({ gesture in
+                                vm.handleDragChange(gesture: gesture)
+                            })
+                            .onEnded({ gesture in
+                                vm.handleDragEnd(gesture: gesture)
+                            })
+                    ) //: Gesture
             } //: Geometry
         } //: ZStack
     }

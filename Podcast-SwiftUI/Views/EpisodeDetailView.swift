@@ -12,6 +12,8 @@ struct EpisodeDetailView: View {
     // MARK: - Properties
     @EnvironmentObject var vm: EpisodeDetailViewModel
     @EnvironmentObject var vmMainTabBar: MainTabBarScreenViewModel
+    
+    @State var viewOffset: CGFloat = 0
 
     // MARK: - Body
     var body: some View {
@@ -129,7 +131,6 @@ struct EpisodeDetailView: View {
                             }
                             .opacity(vmMainTabBar.isMiniPlayer ? 1 : 0)
                 } //: ZStack
-                
             } //: Geometry
             .edgesIgnoringSafeArea(.bottom)
             .background(Color.white)
