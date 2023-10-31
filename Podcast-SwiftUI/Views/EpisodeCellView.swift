@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct EpisodeCellView: View {
     // MARK: - Properties
@@ -15,15 +16,14 @@ struct EpisodeCellView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             HStack(spacing: 16) {
-                AsyncImage(url: URL(string: episode?.imageUrl ?? "")) { image in
-                    image
-                        .resizable()
-                        .scaledToFit()
-                } placeholder: {
-                    ProgressView()
-                }
-                .frame(width: 80, height: 80)
-                .cornerRadius(5)
+                WebImage(url: URL(string: episode?.imageUrl ?? ""))
+                    .resizable()
+                    .placeholder {
+                        ProgressView()
+                    }
+                    .scaledToFit()
+                    .frame(width: 80, height: 80)
+                    .cornerRadius(5)
                     
                 VStack(alignment: .leading, spacing: 3) {
                     Text(episode?.pubDate.toStringFormat() ?? "")

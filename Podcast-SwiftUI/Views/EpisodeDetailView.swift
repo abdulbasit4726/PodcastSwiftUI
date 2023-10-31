@@ -7,6 +7,7 @@
 
 import SwiftUI
 import AVKit
+import SDWebImageSwiftUI
 
 struct EpisodeDetailView: View {
     // MARK: - Properties
@@ -33,6 +34,8 @@ struct EpisodeDetailView: View {
                             
                             // TODO: Episode Image
                             VStack{
+                                
+                                    
                                 if let image = vm.episodeImage {
                                     image
                                         .resizable()
@@ -40,19 +43,19 @@ struct EpisodeDetailView: View {
                                         .cornerRadius(10)
                                         .padding(.vertical)
                                 } else {
-                                    AsyncImage(url: URL(string: vm.episode?.imageUrl ?? "")) { image in
-                                        image
-                                            .resizable()
-                                            .scaledToFill()
-                                            .cornerRadius(10)
-                                            .padding(.vertical)
-                                        let _ =  DispatchQueue.main.async {
-                                            vm.episodeImage = image
+                                    
+                                    WebImage(url: URL(string: vm.episode?.imageUrl ?? ""))
+                                        .onSuccess { image, _ , _ in
+                                            vm.episodeImage = Image(uiImage: image)
                                         }
-                                    } placeholder: {
-                                        ProgressView()
-                                            .scaleEffect(2.0)
-                                    } //: Image
+                                        .resizable()
+                                        .placeholder {
+                                            ProgressView()
+                                                .scaleEffect(2.0)
+                                        }
+                                        .scaledToFill()
+                                        .cornerRadius(10)
+                                        .padding(.vertical)
                                 }
                             } //: VStack
                             .scaleEffect(vm.imageScaleEffect)
@@ -121,7 +124,11 @@ struct EpisodeDetailView: View {
                         } //: VStack
                         .padding([.top, .leading, .trailing])
                         .padding(.bottom, 40)
-                        .opacity(vmMainTabBar.isMiniPlayer ? 0 : 1)
+                        .opacity(
+                            withAnimation(.default) {
+                                vmMainTabBar.isMiniPlayer ? 0 : 1
+                            }
+                        )
 
                        MiniPlayerView()
                             .onTapGesture {
@@ -129,7 +136,11 @@ struct EpisodeDetailView: View {
                                     vmMainTabBar.isMiniPlayer = false
                                 }
                             }
-                            .opacity(vmMainTabBar.isMiniPlayer ? 1 : 0)
+                            .opacity(
+                                withAnimation(.default) {
+                                    vmMainTabBar.isMiniPlayer ? 1 : 0
+                                }
+                            )
                 } //: ZStack
             } //: Geometry
             .edgesIgnoringSafeArea(.bottom)

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct PodcastCellView: View {
     
@@ -17,15 +18,14 @@ struct PodcastCellView: View {
         VStack(alignment: .leading, spacing: 0) {
             
             HStack(spacing: 16) {
-                AsyncImage(url: URL(string: podcast?.artworkUrl600 ?? "")) { image in
-                    image
-                        .resizable()
-                        .scaledToFit()
-                } placeholder: {
-                    ProgressView()
-                }
-                .frame(width: 80, height: 80)
-                .cornerRadius(5)
+                WebImage(url: URL(string: podcast?.artworkUrl600 ?? ""))
+                    .resizable()
+                    .placeholder {
+                        ProgressView()
+                    }
+                    .scaledToFit()
+                    .frame(width: 80, height: 80)
+                    .cornerRadius(5)
                     
                 VStack(alignment: .leading, spacing: 3) {
                     Text(podcast?.trackName ?? "")

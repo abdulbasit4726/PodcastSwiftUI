@@ -21,18 +21,17 @@ class MainTabBarScreenViewModel: ObservableObject {
     @Published var geomerty: GeometryProxy? {
         didSet {
             playerViewHeight = geomerty?.size.height
-            miniPlayerOffset = (geomerty?.size.height ?? 0) - tabBarHeight - miniPlayerHeight
+            miniPlayerOffset = (geomerty?.size.height ?? 0) - 49 - miniPlayerHeight
         }
     }
     
     private var miniPlayerHeight: CGFloat = 64
-    private var tabBarHeight: CGFloat = Helpers.shared.getTabBarHeight()
     private var miniPlayerOffset: CGFloat?
     
     // MARK: - Functions
     func handlePlayerOffset() {
         if let geomerty {
-            withAnimation(.spring(dampingFraction: 0.7)) {
+            withAnimation(.spring(response: 0.4, dampingFraction: 0.7)) {
                 if isMiniPlayer {
                     playerViewOffset = miniPlayerOffset ?? 0
                     playerViewHeight = miniPlayerHeight
@@ -49,7 +48,7 @@ class MainTabBarScreenViewModel: ObservableObject {
         if playerViewOffset >= 0 && !isMiniPlayer {
             playerViewOffset = gesture.translation.height
         } else if isMiniPlayer {
-            if gesture.translation.height <= -50 {
+            if gesture.translation.height <= -10 {
                 isMiniPlayer = false
                 return
             }
@@ -59,9 +58,9 @@ class MainTabBarScreenViewModel: ObservableObject {
     
     func handleDragEnd(gesture: DragGesture.Value) {
         if !isMiniPlayer && gesture.translation.height > 100 {
-            isMiniPlayer = true
-        } else if isMiniPlayer && gesture.translation.height < -100 {
-            isMiniPlayer = false
+                isMiniPlayer = true
+        } else if isMiniPlayer && gesture.translation.height < -10 {
+                isMiniPlayer = false
         } else {
             handlePlayerOffset()
         }

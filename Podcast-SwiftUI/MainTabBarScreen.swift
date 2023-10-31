@@ -33,6 +33,7 @@ struct MainTabBarScreen: View {
                         }
                 } //: Tab
                 .tint(.purple)
+                
                 .onAppear {
                     vm.geomerty = geometry
                 }

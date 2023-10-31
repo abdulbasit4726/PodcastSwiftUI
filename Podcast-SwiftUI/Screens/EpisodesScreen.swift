@@ -31,9 +31,11 @@ struct EpisodesScreen: View {
                         EpisodeCellView(episode: episode)
                             .onTapGesture {
                                 vmPlayerDetail.episode = episode
+                                vmPlayerDetail.playListEpisodes = vm.episodes
                                 vmMainTabBar.isMiniPlayer = false
                             }
                     }//: Loop
+                    .padding(.bottom, 60)
                 } //: Scroll
                 
                 if vm.isLoading {

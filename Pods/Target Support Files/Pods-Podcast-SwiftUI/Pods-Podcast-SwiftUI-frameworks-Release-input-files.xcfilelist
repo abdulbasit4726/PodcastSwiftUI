@@ -2,3 +2,4 @@ ${PODS_ROOT}/Target Support Files/Pods-Podcast-SwiftUI/Pods-Podcast-SwiftUI-fram
 ${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
 ${BUILT_PRODUCTS_DIR}/FeedKit/FeedKit.framework
 ${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework
+${BUILT_PRODUCTS_DIR}/SDWebImageSwiftUI/SDWebImageSwiftUI.framework

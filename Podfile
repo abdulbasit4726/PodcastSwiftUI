@@ -8,7 +8,7 @@ target 'Podcast-SwiftUI' do
   # Pods for Podcast-SwiftUI
 
 pod 'Alamofire'
-pod 'SDWebImage', '~> 5.0'
+pod 'SDWebImageSwiftUI'
 pod 'FeedKit', '~> 9.0'
 
 end

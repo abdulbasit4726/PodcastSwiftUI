@@ -11,7 +11,7 @@ struct PodcastSearchScreen: View {
     
     // MARK: - Properties
     @State private var searchText: String = ""
-    @ObservedObject private var vm = PodcastSearchViewModel()
+    @StateObject private var vm = PodcastSearchViewModel()
     
     // MARK: - Body
     var body: some View {
@@ -27,6 +27,7 @@ struct PodcastSearchScreen: View {
                             } //: Navigation Link
                         } //: VStack
                     } //: Loop
+                    .padding(.bottom, 60)
                 } //: Scroll
                 if vm.isLoading {
                     ProgressView()
@@ -37,7 +38,9 @@ struct PodcastSearchScreen: View {
             .searchable(text: $searchText)
             .autocorrectionDisabled()
             .onChange(of: searchText) { newValue in
-                self.vm.handleSearch(searchText: newValue)
+                if !newValue.isEmpty {                
+                    self.vm.handleSearch(searchText: newValue)
+                }
             }
         } //: Navigation
         
